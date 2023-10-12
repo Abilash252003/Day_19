@@ -1,0 +1,37 @@
+//100 Days of RTL//
+
+//Abilash P//
+
+//16:1 multiplexer in gate flow or structural modeling//
+
+module mux_16_to_1 (I0, I1, I2, I3, I4, I5, I6, I7, I8, I9, I10, I11, I12, I13, I14, I15, S0, S1, S2, S3, Y);
+
+input  I0, I1, I2, I3, I4, I5, I6, I7, I8, I9, I10, I11, I12, I13, I14, I15, S0, S1, S2, S3;
+output Y;
+
+wire W0, W1, W2, W3, W4, W5, W6, W7, W8, W9, WA, WB, WC, WD, WE, WF;
+
+not n1 (P0, S0);
+not n2 (P1, S1);
+not n3 (P2, S2);
+not n4 (P3, S3);
+
+and a1 (W0, P3, P2, P1, P0, I0);
+and a2 (W1, P3, P2, P1, S0, I1);
+and a3 (W2, P3, P2, S1, P0, I2);
+and a4 (W3, P3, P2, S1, S0, I3);
+and a5 (W4, P3, S2, P1, P0, I4);
+and a6 (W5, P3, S2, P1, S0, I5);
+and a7 (W6, P3, S2, S1, P0, I6);
+and a8 (W7, P3, S2, S1, S0, I7);
+and a9 (W8, S3, P2, P1, P0, I8);
+and a10(W9, S3, P2, P1, S0, I9);
+and a11(WA, S3, P2, S1, P0, I10);
+and a12(WB, S3, P2, S1, S0, I11);
+and a13(WC, S3, S2, P1, P0, I12);
+and a14(WD, S3, S2, P1, S0, I13);
+and a15(WE, S3, S2, S1, P0, I14);
+and a16(WF, S3, S2, S1, S0, I15);
+
+or  o1 (Y,  W0, W1, W2, W3, W4, W5, W6, W7, W8, W9, WA, WB, WC, WD, WE, WF);
+endmodule
