@@ -1,0 +1,18 @@
+//100 Days of RTL//
+
+//Abilash P//
+
+//16:1 multiplexer using 8:1 with one 2:1 multiplexer//
+
+module mux_16_to_1 (I0, I1, I2, I3, I4, I5, I6, I7, I8, I9, I10, I11, I12, I13, I14, I15, S0, S1, S2, S3, Y);
+
+input  I0, I1, I2, I3, I4, I5, I6, I7, I8, I9, I10, I11, I12, I13, I14, I15, S0, S1, S2, S3;
+output Y;
+
+wire w1, w2;
+
+mux_8_to_1 M1 (.I0(I0),   .I1(I1),   .I2(I2),   .I3(I3),  .I4(I4),  .I5(I5),  .I6(I6),  .I7(I7),   .S0(S0), .S1(S1), .S2(S2), .Y(w1));
+mux_8_to_1 M2 (.I0(I8),   .I1(I9),   .I2(I10),  .I3(I11), .I4(I12), .I5(I13), .I6(I14), .I7(I15),  .S0(S0), .S1(S1), .S2(S2), .Y(w2));
+
+mux_2_to_1 M3 (.I0(w1),   .I1(w2),   .S0(S3),   .Y(Y));
+endmodule
